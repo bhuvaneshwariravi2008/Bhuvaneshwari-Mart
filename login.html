@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — Akshara Mart</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+
+<div class="auth-shell">
+  <div class="auth-card">
+    <a href="index.html" class="logo"><span class="mark">A</span><span>Akshara Mart</span></a>
+    <h2>Welcome back</h2>
+    <p class="sub">Login to continue shopping</p>
+    <div class="toast-msg error" id="formError"></div>
+    <form id="loginForm" novalidate>
+      <div class="field" id="f-email">
+        <label>Email / Username</label>
+        <input type="email" name="email" required placeholder="you@example.com">
+        <p class="err">Enter a valid email address.</p>
+      </div>
+      <div class="field" id="f-password">
+        <label>Password</label>
+        <div class="pw-wrap">
+          <input type="password" name="password" id="pwInput" required minlength="6" placeholder="Enter password">
+          <button type="button" onclick="togglePw()">SHOW</button>
+        </div>
+        <p class="err">Password must be at least 6 characters.</p>
+      </div>
+      <div class="between" style="margin-bottom:20px">
+        <label class="checkline"><input type="checkbox" checked> Remember me</label>
+        <a href="#" style="font-size:.84rem;color:var(--teal);font-weight:700" onclick="alert('Password reset link sent (demo).');return false;">Forgot Password?</a>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">Login</button>
+    </form>
+    <p class="form-note">Don't have an account? <a href="register.html">Register</a></p>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+
+<script src="js/products.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/store.js"></script>
+<script>
+  renderHeader('Home');
+  renderFooter();
+
+  function togglePw(){
+    const el = document.getElementById('pwInput');
+    el.type = el.type === 'password' ? 'text' : 'password';
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    let valid = true;
+    const email = this.email.value.trim();
+    const password = this.password.value;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    document.getElementById('f-email').classList.toggle('invalid', !emailOk);
+    if (!emailOk) valid = false;
+    const pwOk = password.length >= 6;
+    document.getElementById('f-password').classList.toggle('invalid', !pwOk);
+    if (!pwOk) valid = false;
+    if (!valid) return;
+
+    const res = loginUser(email, password);
+    const errBox = document.getElementById('formError');
+    if (!res.ok){
+      errBox.textContent = res.error;
+      errBox.classList.add('show');
+      return;
+    }
+    errBox.classList.remove('show');
+    toast('Login successful');
+    setTimeout(()=> window.location.href = 'account.html', 400);
+  });
+</script>
+</body>
+</html>
