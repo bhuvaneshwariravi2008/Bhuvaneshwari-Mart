@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | BhuvaneshwariMart</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f1f3f6;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+
+        .header {
+            height: 65px;
+            background: #2874f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ffe500;
+        }
+
+        /* MAIN */
+
+        .main {
+            min-height: calc(100vh - 65px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .register-box {
+            width: 850px;
+            background: white;
+            display: flex;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* LEFT */
+
+        .left-panel {
+            width: 40%;
+            background: #2874f0;
+            color: white;
+            padding: 45px 35px;
+        }
+
+        .left-panel h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .left-panel p {
+            line-height: 1.6;
+            color: #e8f0ff;
+        }
+
+        .features {
+            margin-top: 35px;
+        }
+
+        .feature {
+            margin-bottom: 22px;
+            font-size: 14px;
+        }
+
+        .feature strong {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        /* RIGHT */
+
+        .right-panel {
+            width: 60%;
+            padding: 40px 50px;
+        }
+
+        .right-panel h2 {
+            font-size: 25px;
+            color: #222;
+            margin-bottom: 7px;
+        }
+
+        .subtitle {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        /* ROLE */
+
+        .role-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .roles {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .role {
+            flex: 1;
+            padding: 11px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .role:hover {
+            border-color: #2874f0;
+        }
+
+        /* INPUT */
+
+        .input-group {
+            margin-bottom: 17px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 7px;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            height: 43px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 0 12px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #2874f0;
+        }
+
+        /* BUTTON */
+
+        .create-btn {
+            width: 100%;
+            height: 47px;
+            border: none;
+            background: #fb641b;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        .create-btn:hover {
+            background: #e85b16;
+        }
+
+        /* LOGIN */
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid #eee;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .login-link a {
+            color: #2874f0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .register-box {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .left-panel {
+                width: 100%;
+            }
+
+            .right-panel {
+                width: 100%;
+                padding: 30px;
+            }
+
+            .features {
+                display: none;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="logo">
+            🛒 Bhuvaneshwari<span>Mart</span>
+        </div>
+
+        <div>
+            Create your account
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="register-box">
+
+
+            <!-- LEFT PANEL -->
+
+            <section class="left-panel">
+
+                <h1>Join BhuvaneshwariMart</h1>
+
+                <p>
+                    Create your account and enjoy easy,
+                    secure and convenient grocery shopping.
+                </p>
+
+
+                <div class="features">
+
+                    <div class="feature">
+
+                        <strong>🛒 Easy Shopping</strong>
+
+                        Shop groceries from anywhere.
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <strong>📦 Track Orders</strong>
+
+                        View your orders anytime.
+
+                    </div>
+
+
+                    <div class="feature">
+
+                        <strong>🚚 Doorstep Delivery</strong>
+
+                        Get groceries delivered to your home.
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RIGHT PANEL -->
+
+            <section class="right-panel">
+
+                <h2>Create New Account</h2>
+
+                <p class="subtitle">
+                    Enter your details to create your account
+                </p>
+
+
+                <!-- ROLE -->
+
+                <div class="role-title">
+                    Account Type
+                </div>
+
+                <div class="roles">
+
+                    <label class="role">
+
+                        <input
+                            type="radio"
+                            name="role"
+                            value="buyer"
+                            checked
+                        >
+
+                        🛒 Buyer
+
+                    </label>
+
+
+                    <label class="role">
+
+                        <input
+                            type="radio"
+                            name="role"
+                            value="seller"
+                        >
+
+                        🏪 Seller
+
+                    </label>
+
+                </div>
+
+
+                <!-- NAME -->
+
+                <div class="input-group">
+
+                    <label>
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        placeholder="Enter your full name"
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label>
+                        Email ID
+                    </label>
+
+                    <input
+                        type="email"
+                        placeholder="Enter your email address"
+                    >
+
+                </div>
+
+
+                <!-- MOBILE -->
+
+                <div class="input-group">
+
+                    <label>
+                        Mobile Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        placeholder="Enter your mobile number"
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <label>
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        placeholder="Create a password"
+                    >
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="input-group">
+
+                    <label>
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        placeholder="Confirm your password"
+                    >
+
+                </div>
+
+
+                <!-- BUTTON -->
+
+                <button class="create-btn">
+                    CREATE ACCOUNT
+                </button>
+
+
+                <!-- LOGIN -->
+
+                <div class="login-link">
+
+                    Already have an account?
+
+                    <a href="login.html">
+                        Login
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BhuvaneshwariMart | Fresh Vegetables & Fruits</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f3f6;
+            color: #222;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #2874f0;
+            color: white;
+
+            padding: 12px 7%;
+
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #ffe500;
+        }
+
+        .search {
+            flex: 1;
+
+            max-width: 600px;
+
+            padding: 12px 16px;
+
+            border: none;
+            border-radius: 3px;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+
+        /* NAVIGATION */
+
+        .nav {
+            background: white;
+
+            display: flex;
+            justify-content: center;
+
+            gap: 45px;
+
+            padding: 15px;
+
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        }
+
+        .nav a {
+            color: #333;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .nav a:hover {
+            color: #2874f0;
+        }
+
+
+        /* HERO */
+
+        .hero {
+            width: 90%;
+            max-width: 1200px;
+
+            margin: 25px auto;
+
+            background: linear-gradient(135deg, #e8f5e9, #fff);
+
+            border-radius: 8px;
+
+            padding: 55px 50px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            font-size: 38px;
+
+            color: #222;
+
+            margin-bottom: 15px;
+        }
+
+        .hero-text h1 span {
+            color: #2e7d32;
+        }
+
+        .hero-text p {
+            color: #666;
+
+            font-size: 17px;
+
+            line-height: 1.6;
+
+            margin-bottom: 25px;
+        }
+
+        .shop-button {
+            display: inline-block;
+
+            background: #fb641b;
+
+            color: white;
+
+            padding: 14px 28px;
+
+            text-decoration: none;
+
+            border-radius: 4px;
+
+            font-weight: bold;
+        }
+
+        .hero-image {
+            font-size: 120px;
+        }
+
+
+        /* SECTION */
+
+        .section {
+            width: 90%;
+            max-width: 1200px;
+
+            margin: 30px auto;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+
+            font-size: 25px;
+        }
+
+
+        /* CATEGORIES */
+
+        .categories {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .category {
+            background: white;
+
+            padding: 25px 15px;
+
+            text-align: center;
+
+            border-radius: 6px;
+
+            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+
+            cursor: pointer;
+        }
+
+        .category-icon {
+            font-size: 50px;
+
+            margin-bottom: 12px;
+        }
+
+        .category h3 {
+            font-size: 17px;
+        }
+
+        .category p {
+            color: #777;
+
+            font-size: 13px;
+
+            margin-top: 6px;
+        }
+
+
+        /* PRODUCTS */
+
+        .products {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .product {
+            background: white;
+
+            padding: 20px;
+
+            border-radius: 6px;
+
+            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+
+            text-align: center;
+        }
+
+        .product-image {
+            height: 150px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #f7f7f7;
+
+            font-size: 85px;
+
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            margin-bottom: 8px;
+        }
+
+        .product p {
+            color: #666;
+
+            font-size: 14px;
+
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 19px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+        }
+
+        .buy-button {
+            display: block;
+
+            background: #2874f0;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 11px;
+
+            border-radius: 4px;
+
+            font-weight: bold;
+        }
+
+        .buy-button:hover {
+            background: #1558c0;
+        }
+
+
+        /* OFFER */
+
+        .offer {
+            background: #fff3e0;
+
+            padding: 30px;
+
+            border-radius: 7px;
+
+            text-align: center;
+
+            margin-top: 30px;
+        }
+
+        .offer h2 {
+            color: #e65100;
+
+            margin-bottom: 10px;
+        }
+
+        .offer p {
+            color: #666;
+        }
+
+
+        /* FOOTER */
+
+        .footer {
+            background: #172337;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 35px;
+
+            margin-top: 45px;
+        }
+
+        .footer p {
+            color: #ccc;
+
+            margin-top: 8px;
+
+            font-size: 13px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .header {
+                flex-wrap: wrap;
+            }
+
+            .search {
+                order: 3;
+
+                flex-basis: 100%;
+            }
+
+            .hero {
+                flex-direction: column;
+
+                text-align: center;
+
+                padding: 40px 20px;
+            }
+
+            .hero-text h1 {
+                font-size: 30px;
+            }
+
+            .hero-image {
+                margin-top: 25px;
+            }
+
+            .categories,
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav {
+                gap: 18px;
+
+                flex-wrap: wrap;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .categories,
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .header-links {
+                gap: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="logo">
+            🛒 Bhuvaneshwari<span>Mart</span>
+        </div>
+
+        <input
+            type="text"
+            class="search"
+            placeholder="Search vegetables, fruits and groceries">
+
+
+        <div class="header-links">
+
+            <a href="login.html">
+                Login
+            </a>
+
+            <a href="buyer/cart.html">
+                🛒 Cart
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="nav">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="buyer/products.html">
+            Vegetables
+        </a>
+
+        <a href="buyer/products.html">
+            Fruits
+        </a>
+
+        <a href="buyer/products.html">
+            Offers
+        </a>
+
+        <a href="buyer/products.html">
+            Fresh Picks
+        </a>
+
+    </nav>
+
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-text">
+
+            <h1>
+                Fresh <span>Vegetables & Fruits</span>
+                at Your Doorstep
+            </h1>
+
+            <p>
+                Shop fresh vegetables and delicious fruits
+                from BhuvaneshwariMart.
+                Quality products delivered to your home.
+            </p>
+
+            <a href="buyer/products.html" class="shop-button">
+                SHOP NOW
+            </a>
+
+        </div>
+
+
+        <div class="hero-image">
+            🥕🍎
+        </div>
+
+    </section>
+
+
+
+    <!-- CATEGORIES -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Shop by Category
+        </h2>
+
+
+        <div class="categories">
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    🥕
+                </div>
+
+                <h3>
+                    Vegetables
+                </h3>
+
+                <p>
+                    Fresh daily vegetables
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    🍎
+                </div>
+
+                <h3>
+                    Fruits
+                </h3>
+
+                <p>
+                    Fresh and tasty fruits
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    🥬
+                </div>
+
+                <h3>
+                    Leafy Greens
+                </h3>
+
+                <p>
+                    Fresh green vegetables
+                </p>
+
+            </div>
+
+
+            <div class="category">
+
+                <div class="category-icon">
+                    🍌
+                </div>
+
+                <h3>
+                    Fresh Picks
+                </h3>
+
+                <p>
+                    Today's fresh products
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- POPULAR PRODUCTS -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Popular Fresh Products
+        </h2>
+
+
+        <div class="products">
+
+
+            <!-- CARROT -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    🥕
+                </div>
+
+                <h3>
+                    Fresh Carrot
+                </h3>
+
+                <p>
+                    1 kg
+                </p>
+
+                <div class="price">
+                    ₹60
+                </div>
+
+                <a href="buyer/product-details.html"
+                   class="buy-button">
+
+                    VIEW PRODUCT
+
+                </a>
+
+            </div>
+
+
+
+            <!-- TOMATO -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    🍅
+                </div>
+
+                <h3>
+                    Fresh Tomato
+                </h3>
+
+                <p>
+                    1 kg
+                </p>
+
+                <div class="price">
+                    ₹40
+                </div>
+
+                <a href="buyer/product-details.html"
+                   class="buy-button">
+
+                    VIEW PRODUCT
+
+                </a>
+
+            </div>
+
+
+
+            <!-- APPLE -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    🍎
+                </div>
+
+                <h3>
+                    Fresh Apple
+                </h3>
+
+                <p>
+                    1 kg
+                </p>
+
+                <div class="price">
+                    ₹180
+                </div>
+
+                <a href="buyer/product-details.html"
+                   class="buy-button">
+
+                    VIEW PRODUCT
+
+                </a>
+
+            </div>
+
+
+
+            <!-- BANANA -->
+
+            <div class="product">
+
+                <div class="product-image">
+                    🍌
+                </div>
+
+                <h3>
+                    Fresh Banana
+                </h3>
+
+                <p>
+                    1 kg
+                </p>
+
+                <div class="price">
+                    ₹50
+                </div>
+
+                <a href="buyer/product-details.html"
+                   class="buy-button">
+
+                    VIEW PRODUCT
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- OFFER -->
+
+    <section class="section">
+
+        <div class="offer">
+
+            <h2>
+                🎉 Fresh Fruits & Vegetables Offers
+            </h2>
+
+            <p>
+                Get fresh products at great prices
+                from BhuvaneshwariMart.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <h3>
+            🛒 BhuvaneshwariMart
+        </h3>
+
+        <p>
+            Fresh Vegetables & Fruits delivered to your doorstep
+        </p>
+
+        <p>
+            © 2026 BhuvaneshwariMart. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

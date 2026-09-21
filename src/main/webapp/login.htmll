@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - BhuvaneshwariMart</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            min-height: 100vh;
+        }
+        /* HEADER */
+        header {
+            background: #1565c0;
+            color: white;
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .home-link {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        /* MAIN */
+        .container {
+            min-height: calc(100vh - 70px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .login-box {
+            width: 900px;
+            max-width: 100%;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+            display: flex;
+        }
+
+        /* LEFT SIDE */
+        .left {
+            width: 45%;
+            background: #1565c0;
+            color: white;
+            padding: 50px 40px;
+        }
+
+        .left h1 {
+            font-size: 32px;
+            margin-bottom: 18px;
+        }
+
+        .left p {
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .benefit {
+            margin: 18px 0;
+            font-size: 16px;
+        }
+
+        /* RIGHT SIDE */
+        .right {
+            width: 55%;
+            padding: 45px;
+        }
+
+        .right h2 {
+            color: #222;
+            margin-bottom: 8px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        /* ROLE */
+        .role-title {
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .roles {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 22px;
+        }
+
+        .roles label {
+            cursor: pointer;
+            color: #444;
+        }
+
+        /* INPUTS */
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #1565c0;
+        }
+
+        /* OPTIONS */
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+            font-size: 14px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .forgot {
+            color: #1565c0;
+            text-decoration: none;
+        }
+
+        /* LOGIN BUTTON */
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #1565c0;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #0d47a1;
+        }
+
+        /* SUCCESS MESSAGE */
+        #successMessage {
+            display: none;
+            margin-top: 18px;
+            padding: 14px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* REGISTER */
+        .register-text {
+            text-align: center;
+            margin-top: 22px;
+            color: #666;
+        }
+
+        .register-text a {
+            color: #1565c0;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #777;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 750px) {
+            .login-box {
+                flex-direction: column;
+            }
+
+            .left,
+            .right {
+                width: 100%;
+            }
+
+            .left {
+                padding: 35px 30px;
+            }
+
+            .right {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <div class="logo">
+            🛒 BhuvaneshwariMart
+        </div>
+
+        <a href="index.html" class="home-link">
+            🏠 Home
+        </a>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <div class="container">
+
+        <div class="login-box">
+
+            <!-- LEFT -->
+            <div class="left">
+
+                <h1>Welcome Back!</h1>
+
+                <p>
+                    Login to BhuvaneshwariMart and enjoy
+                    fresh vegetables, fruits and groceries
+                    delivered to your doorstep.
+                </p>
+
+                <div class="benefit">
+                    ✅ Fresh Vegetables & Fruits
+                </div>
+
+                <div class="benefit">
+                    ✅ Easy & Secure Shopping
+                </div>
+
+                <div class="benefit">
+                    ✅ Fast Home Delivery
+                </div>
+
+                <div class="benefit">
+                    ✅ Track Your Orders
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT -->
+            <div class="right">
+
+                <h2>Login</h2>
+
+                <p class="subtitle">
+                    Sign in to your BhuvaneshwariMart account
+                </p>
+
+
+                <!-- ROLE -->
+                <div class="role-title">
+                    Login As
+                </div>
+
+                <div class="roles">
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="role"
+                            value="buyer"
+                            checked
+                        >
+
+                        Buyer
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="role"
+                            value="seller"
+                        >
+
+                        Seller
+
+                    </label>
+
+                </div>
+
+
+                <!-- EMAIL / MOBILE -->
+                <div class="input-group">
+
+                    <label for="email">
+                        Email ID / Mobile Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="email"
+                        placeholder="Enter your Email ID or Mobile Number"
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your Password"
+                    >
+
+                </div>
+
+
+                <!-- OPTIONS -->
+                <div class="options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="remember"
+                        >
+
+                        Remember me
+
+                    </label>
+
+
+                    <a href="#" class="forgot">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <!-- LOGIN -->
+                <button
+                    type="button"
+                    class="login-btn"
+                    onclick="loginUser()"
+                >
+                    LOGIN
+                </button>
+
+
+                <!-- SUCCESS -->
+                <div id="successMessage">
+
+                    ✅ Login Successful!
+                    <br>
+                    Redirecting...
+
+                </div>
+
+
+                <!-- REGISTER -->
+                <div class="register-text">
+
+                    Don't have an account?
+
+                    <a href="register.html">
+                        Create New Account
+                    </a>
+
+                </div>
+
+
+                <!-- BACK HOME -->
+                <a href="index.html" class="back-home">
+                    ← Back to Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        function loginUser() {
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value.trim();
+
+
+            // Check input
+            if (email === "" || password === "") {
+
+                alert(
+                    "Please enter Email ID / Mobile Number and Password."
+                );
+
+                return;
+            }
+
+
+            // Get selected role
+            const selectedRole =
+                document.querySelector(
+                    'input[name="role"]:checked'
+                ).value;
+
+
+            // Save login information
+            localStorage.setItem("userLogin", "true");
+            localStorage.setItem("userRole", selectedRole);
+            localStorage.setItem("userEmail", email);
+
+
+            // Show success message
+            document.getElementById(
+                "successMessage"
+            ).style.display = "block";
+
+
+            // Redirect
+            setTimeout(function () {
+
+                if (selectedRole === "seller") {
+
+                    // Seller → Seller Home
+                    window.location.href =
+                        "seller/home.html";
+
+                } else {
+
+                    // Buyer → ALL 60 PRODUCTS
+                    window.location.href =
+                        "buyer/products.html";
+
+                }
+
+            }, 1500);
+
+        }
+
+    </script>
+
+</body>
+</html>
