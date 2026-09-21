@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product Details - BhuvaneshwariMart</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fa;
+        }
+
+        header {
+            background: #1565c0;
+            color: white;
+            padding: 18px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #1565c0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .product-box {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            display: flex;
+            gap: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+        }
+
+        .product-image {
+            width: 45%;
+            min-height: 350px;
+            background: #f1f8e9;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 150px;
+        }
+
+        .product-info {
+            width: 55%;
+        }
+
+        .category {
+            color: #1565c0;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-info h1 {
+            color: #222;
+            margin-bottom: 15px;
+            font-size: 32px;
+        }
+
+        .rating {
+            color: #f9a825;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 30px;
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 8px;
+        }
+
+        .unit {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .quantity {
+            margin-bottom: 25px;
+        }
+
+        .quantity label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .quantity-controls button {
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 6px;
+            background: #e3f2fd;
+            color: #1565c0;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .quantity-controls span {
+            font-size: 20px;
+            font-weight: bold;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        .total {
+            font-size: 23px;
+            font-weight: bold;
+            color: #2e7d32;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 13px 22px;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .cart-btn {
+            background: #ff9800;
+        }
+
+        .buy-btn {
+            background: #1565c0;
+        }
+
+        .delivery {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 7px;
+            color: #555;
+        }
+
+        .error {
+            background: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 12px;
+            color: #d32f2f;
+        }
+
+        footer {
+            margin-top: 50px;
+            background: #1565c0;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 700px) {
+
+            .product-box {
+                flex-direction: column;
+            }
+
+            .product-image,
+            .product-info {
+                width: 100%;
+            }
+
+            header {
+                padding: 18px 20px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+        🛒 BhuvaneshwariMart
+    </div>
+
+    <div>
+
+        <a href="home.html">Home</a>
+
+        <a href="products.html">Products</a>
+
+        <a href="cart.html">Cart 🛒</a>
+
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <a href="products.html" class="back">
+        ← Back to Products
+    </a>
+
+    <div id="productContainer"></div>
+
+</div>
+
+
+<footer>
+
+    © 2026 BhuvaneshwariMart |
+    Fresh Vegetables & Fruits
+
+</footer>
+
+
+<script>
+
+    // Selected product from products.html
+    const product =
+        JSON.parse(localStorage.getItem("selectedProduct"));
+
+    const container =
+        document.getElementById("productContainer");
+
+    let quantity = 1;
+
+
+    // Product not found
+    if (!product) {
+
+        container.innerHTML = `
+
+            <div class="error">
+
+                <h2>
+                    Product not found
+                </h2>
+
+                <br>
+
+                <a href="products.html">
+                    Go to Products
+                </a>
+
+            </div>
+
+        `;
+
+    } else {
+
+        container.innerHTML = `
+
+            <div class="product-box">
+
+                <div class="product-image">
+
+                    ${product.emoji || "🛒"}
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="category">
+
+                        ${product.category || ""}
+
+                    </div>
+
+
+                    <h1>
+
+                        ${product.name}
+
+                    </h1>
+
+
+                    <div class="rating">
+
+                        ⭐⭐⭐⭐⭐
+                        ${product.rating || "4.5"}
+
+                    </div>
+
+
+                    <div class="price">
+
+                        ₹${Number(product.price).toFixed(2)}
+
+                    </div>
+
+
+                    <div class="unit">
+
+                        ${product.unit || ""}
+
+                    </div>
+
+
+                    <p class="description">
+
+                        Fresh quality
+                        ${product.name}
+                        selected specially for your daily needs.
+
+                    </p>
+
+
+                    <div class="quantity">
+
+                        <label>
+                            Quantity
+                        </label>
+
+
+                        <div class="quantity-controls">
+
+                            <button
+                                type="button"
+                                onclick="decreaseQuantity()">
+
+                                −
+
+                            </button>
+
+
+                            <span id="quantity">
+                                1
+                            </span>
+
+
+                            <button
+                                type="button"
+                                onclick="increaseQuantity()">
+
+                                +
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="total">
+
+                        Total:
+                        ₹<span id="totalPrice">
+
+                            ${Number(product.price).toFixed(2)}
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="buttons">
+
+                        <button
+                            type="button"
+                            class="btn cart-btn"
+                            onclick="addToCart()">
+
+                            🛒 Add to Cart
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="btn buy-btn"
+                            onclick="buyNow()">
+
+                            ⚡ Buy Now
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="delivery">
+
+                        🚚 Free delivery on eligible orders
+
+                        <br><br>
+
+                        📦 Fresh vegetables delivered to your doorstep
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+    }
+
+
+    // Increase quantity
+    function increaseQuantity() {
+
+        quantity++;
+
+        updateTotal();
+
+    }
+
+
+    // Decrease quantity
+    function decreaseQuantity() {
+
+        if (quantity > 1) {
+
+            quantity--;
+
+            updateTotal();
+
+        }
+
+    }
+
+
+    // Update total amount
+    function updateTotal() {
+
+        document.getElementById("quantity")
+            .textContent = quantity;
+
+
+        const total =
+            Number(product.price) * quantity;
+
+
+        document.getElementById("totalPrice")
+            .textContent = total.toFixed(2);
+
+    }
+
+
+    // ADD TO CART
+    function addToCart() {
+
+        const cartData = {
+
+            id: product.id,
+
+            name: product.name,
+
+            category: product.category,
+
+            price: Number(product.price),
+
+            unit: product.unit,
+
+            rating: product.rating,
+
+            emoji: product.emoji,
+
+            quantity: quantity,
+
+            total:
+                Number(product.price) * quantity
+
+        };
+
+
+        // Save selected product
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(cartData)
+        );
+
+
+        // Go to cart
+        window.location.href =
+            "cart.html";
+
+    }
+
+
+    // BUY NOW
+    function buyNow() {
+
+        const cartData = {
+
+            id: product.id,
+
+            name: product.name,
+
+            category: product.category,
+
+            price: Number(product.price),
+
+            unit: product.unit,
+
+            rating: product.rating,
+
+            emoji: product.emoji,
+
+            quantity: quantity,
+
+            total:
+                Number(product.price) * quantity
+
+        };
+
+
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(cartData)
+        );
+
+
+        // Buy Now goes directly to address
+        window.location.href =
+            "address.html";
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
