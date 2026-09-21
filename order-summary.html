@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Order Summary - BhuvaneshwariMart</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+
+        header {
+            background: #0d6efd;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            margin: 40px auto;
+        }
+
+
+        .title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+
+        .title h1 {
+            color: #0d6efd;
+            margin-bottom: 8px;
+        }
+
+
+        .title p {
+            color: #666;
+        }
+
+
+        .section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+
+        .section h2 {
+            color: #0d6efd;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+
+        .address-box {
+            line-height: 1.8;
+            color: #444;
+        }
+
+
+        .product {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+
+        .product:last-child {
+            border-bottom: none;
+        }
+
+
+        .product-image {
+            width: 70px;
+            height: 70px;
+            background: #f1f7ff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 38px;
+            flex-shrink: 0;
+        }
+
+
+        .product-info {
+            flex: 1;
+        }
+
+
+        .product-info h3 {
+            margin: 0 0 8px;
+            color: #222;
+        }
+
+
+        .product-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+
+        .product-total {
+            font-size: 18px;
+            font-weight: bold;
+            color: #198754;
+        }
+
+
+        .bill-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            color: #555;
+        }
+
+
+        .grand-total {
+            display: flex;
+            justify-content: space-between;
+            border-top: 2px solid #eee;
+            margin-top: 10px;
+            padding-top: 18px;
+            font-size: 21px;
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+
+        .place-btn {
+            width: 100%;
+            padding: 16px;
+            background: #198754;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+
+        .place-btn:hover {
+            background: #157347;
+        }
+
+
+        .empty {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+
+
+        #successPage {
+            display: none;
+        }
+
+
+        .success-box {
+            background: white;
+            max-width: 650px;
+            margin: 70px auto;
+            padding: 45px 25px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+
+        .success-icon {
+            font-size: 75px;
+            margin-bottom: 15px;
+        }
+
+
+        .success-box h1 {
+            color: #198754;
+            margin-bottom: 15px;
+        }
+
+
+        .success-box p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+
+        .order-id {
+            margin: 22px 0;
+            padding: 15px;
+            background: #f1f7ff;
+            border-radius: 8px;
+            color: #0d6efd;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+
+        .success-total {
+            font-size: 20px;
+            font-weight: bold;
+            color: #198754;
+            margin: 15px 0;
+        }
+
+
+        .continue-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 13px 28px;
+            background: #0d6efd;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #777;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .product {
+                align-items: flex-start;
+            }
+
+
+            .product-image {
+                width: 55px;
+                height: 55px;
+                font-size: 30px;
+            }
+
+
+            .product-total {
+                font-size: 15px;
+            }
+
+
+            .grand-total {
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ORDER SUMMARY -->
+
+<div id="orderPage">
+
+
+    <header>
+
+        <div class="logo">
+            🛒 BhuvaneshwariMart
+        </div>
+
+
+        <a href="cart.html">
+            🛒 Cart
+        </a>
+
+    </header>
+
+
+
+    <div class="container">
+
+
+        <div class="title">
+
+            <h1>
+                Order Summary
+            </h1>
+
+
+            <p>
+                Review your order before placing it
+            </p>
+
+        </div>
+
+
+
+        <!-- ADDRESS -->
+
+        <div class="section">
+
+            <h2>
+                📍 Delivery Address
+            </h2>
+
+
+            <div
+                id="addressBox"
+                class="address-box">
+
+                Loading address...
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRODUCTS -->
+
+        <div class="section">
+
+            <h2>
+                🛍️ Your Products
+            </h2>
+
+
+            <div id="productList">
+
+                Loading products...
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BILL -->
+
+        <div class="section">
+
+            <h2>
+                💰 Price Details
+            </h2>
+
+
+            <div class="bill-row">
+
+                <span>
+                    Product Total
+                </span>
+
+
+                <span id="productTotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="bill-row">
+
+                <span>
+                    Delivery
+                </span>
+
+
+                <span>
+                    FREE
+                </span>
+
+            </div>
+
+
+            <div class="grand-total">
+
+                <span>
+                    Total Amount
+                </span>
+
+
+                <span id="grandTotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="place-btn"
+                onclick="placeOrder()">
+
+                PLACE ORDER
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <footer>
+
+        © 2026 BhuvaneshwariMart.
+        Fresh Vegetables & Fruits Delivered.
+
+    </footer>
+
+
+</div>
+
+
+
+<!-- SUCCESS PAGE -->
+
+<div id="successPage">
+
+
+    <header>
+
+        <div class="logo">
+            🛒 BhuvaneshwariMart
+        </div>
+
+    </header>
+
+
+
+    <div class="success-box">
+
+
+        <div class="success-icon">
+            🎉
+        </div>
+
+
+        <h1>
+            Order Successful!
+        </h1>
+
+
+        <p>
+            Your vegetables and fruits order
+            has been placed successfully.
+        </p>
+
+
+        <div
+            class="order-id"
+            id="successOrderId">
+
+            Order ID: BWM-ORDER
+
+        </div>
+
+
+        <div
+            class="success-total"
+            id="successTotal">
+
+            Total Amount: ₹0
+
+        </div>
+
+
+        <p>
+            Thank you for shopping with
+            BhuvaneshwariMart.
+        </p>
+
+
+        <a
+            href="home.html"
+            class="continue-btn">
+
+            Continue Shopping
+
+        </a>
+
+    </div>
+
+
+    <footer>
+
+        © 2026 BhuvaneshwariMart.
+        Fresh Vegetables & Fruits Delivered.
+
+    </footer>
+
+</div>
+
+
+
+<script>
+
+
+    /*
+     * GET CART
+     *
+     * Current product-details.html saves
+     * one product as an object.
+     *
+     * This code converts it into an array.
+     */
+
+    let savedCart =
+        JSON.parse(
+            localStorage.getItem("cart")
+        );
+
+
+    let cart = [];
+
+
+    if (savedCart) {
+
+        if (Array.isArray(savedCart)) {
+
+            cart = savedCart;
+
+        } else {
+
+            cart = [savedCart];
+
+        }
+
+    }
+
+
+
+    /*
+     * GET ADDRESS
+     */
+
+    let deliveryAddress =
+        JSON.parse(
+            localStorage.getItem(
+                "deliveryAddress"
+            )
+        ) || null;
+
+
+
+    /*
+     * SHOW ADDRESS
+     */
+
+    function showAddress() {
+
+
+        const addressBox =
+            document.getElementById(
+                "addressBox"
+            );
+
+
+        if (!deliveryAddress) {
+
+            addressBox.innerHTML = `
+
+                <p>
+                    No delivery address found.
+                </p>
+
+            `;
+
+            return;
+
+        }
+
+
+        addressBox.innerHTML = `
+
+            <strong>
+                ${deliveryAddress.fullName}
+            </strong>
+
+            <br>
+
+            Mobile:
+            ${deliveryAddress.mobile}
+
+            <br>
+
+            ${deliveryAddress.address}
+
+            <br>
+
+            ${deliveryAddress.city},
+            ${deliveryAddress.state}
+            -
+            ${deliveryAddress.pincode}
+
+            <br>
+
+            ${
+                deliveryAddress.landmark
+                ?
+                "Landmark: " +
+                deliveryAddress.landmark
+                :
+                ""
+            }
+
+            <br>
+
+            <strong>
+                Address Type:
+                ${deliveryAddress.addressType}
+            </strong>
+
+        `;
+
+    }
+
+
+
+    /*
+     * SHOW PRODUCTS
+     */
+
+    function showProducts() {
+
+
+        const productList =
+            document.getElementById(
+                "productList"
+            );
+
+
+        if (cart.length === 0) {
+
+            productList.innerHTML = `
+
+                <div class="empty">
+
+                    Your cart is empty.
+
+                </div>
+
+            `;
+
+
+            document.getElementById(
+                "productTotal"
+            ).textContent = "₹0";
+
+
+            document.getElementById(
+                "grandTotal"
+            ).textContent = "₹0";
+
+
+            return;
+
+        }
+
+
+        let total = 0;
+
+
+        productList.innerHTML = "";
+
+
+        cart.forEach(function(product) {
+
+
+            const price =
+                Number(product.price) || 0;
+
+
+            const quantity =
+                Number(product.quantity) || 1;
+
+
+            const itemTotal =
+                price * quantity;
+
+
+            total += itemTotal;
+
+
+            const productDiv =
+                document.createElement(
+                    "div"
+                );
+
+
+            productDiv.className =
+                "product";
+
+
+            productDiv.innerHTML = `
+
+                <div class="product-image">
+
+                    ${product.emoji || "🛒"}
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <h3>
+                        ${product.name}
+                    </h3>
+
+
+                    <p>
+                        ₹${price}
+                        /
+                        ${product.unit || "unit"}
+                    </p>
+
+
+                    <p>
+                        Quantity:
+                        ${quantity}
+                    </p>
+
+                </div>
+
+
+                <div class="product-total">
+
+                    ₹${itemTotal.toFixed(2)}
+
+                </div>
+
+            `;
+
+
+            productList.appendChild(
+                productDiv
+            );
+
+        });
+
+
+        /*
+         * PRODUCT TOTAL
+         */
+
+        document.getElementById(
+            "productTotal"
+        ).textContent =
+            "₹" + total.toFixed(2);
+
+
+        /*
+         * GRAND TOTAL
+         */
+
+        document.getElementById(
+            "grandTotal"
+        ).textContent =
+            "₹" + total.toFixed(2);
+
+    }
+
+
+
+    /*
+     * PLACE ORDER
+     */
+
+    function placeOrder() {
+
+
+        /*
+         * Check cart
+         */
+
+        if (cart.length === 0) {
+
+            alert(
+                "Your cart is empty."
+            );
+
+            return;
+
+        }
+
+
+        /*
+         * Calculate total
+         */
+
+        let total = 0;
+
+
+        cart.forEach(function(product) {
+
+            const price =
+                Number(product.price) || 0;
+
+
+            const quantity =
+                Number(product.quantity) || 1;
+
+
+            total +=
+                price * quantity;
+
+        });
+
+
+        /*
+         * Create Order ID
+         */
+
+        const orderId =
+            "BWM" + Date.now();
+
+
+
+        /*
+         * Create Order
+         */
+
+        const order = {
+
+            orderId: orderId,
+
+            products: cart,
+
+            address: deliveryAddress,
+
+            total: total,
+
+            orderDate:
+                new Date().toLocaleString()
+
+        };
+
+
+        /*
+         * Save latest order
+         */
+
+        localStorage.setItem(
+
+            "latestOrder",
+
+            JSON.stringify(order)
+
+        );
+
+
+        /*
+         * Get old orders
+         */
+
+        let orders =
+            JSON.parse(
+                localStorage.getItem(
+                    "orders"
+                )
+            ) || [];
+
+
+        /*
+         * Add current order
+         */
+
+        orders.push(order);
+
+
+        /*
+         * Save all orders
+         */
+
+        localStorage.setItem(
+
+            "orders",
+
+            JSON.stringify(orders)
+
+        );
+
+
+        /*
+         * Show success details
+         */
+
+        document.getElementById(
+            "successOrderId"
+        ).textContent =
+            "Order ID: " + orderId;
+
+
+        document.getElementById(
+            "successTotal"
+        ).textContent =
+            "Total Amount: ₹" +
+            total.toFixed(2);
+
+
+        /*
+         * Hide summary
+         */
+
+        document.getElementById(
+            "orderPage"
+        ).style.display =
+            "none";
+
+
+        /*
+         * Show success
+         */
+
+        document.getElementById(
+            "successPage"
+        ).style.display =
+            "block";
+
+
+        /*
+         * Clear cart
+         */
+
+        localStorage.removeItem(
+            "cart"
+        );
+
+
+        /*
+         * Scroll top
+         */
+
+        window.scrollTo(
+            0,
+            0
+        );
+
+    }
+
+
+
+    /*
+     * START PAGE
+     */
+
+    showAddress();
+
+    showProducts();
+
+
+</script>
+
+
+</body>
+
+</html>
