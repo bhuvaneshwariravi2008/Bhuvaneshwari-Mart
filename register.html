@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register — Akshara Mart</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+
+<div class="auth-shell">
+  <div class="auth-card" style="max-width:460px">
+    <a href="index.html" class="logo"><span class="mark">A</span><span>Akshara Mart</span></a>
+    <h2>Create your account</h2>
+    <p class="sub">Join Akshara Mart for faster checkout</p>
+    <div class="toast-msg error" id="formError"></div>
+    <form id="registerForm" novalidate>
+      <div class="field" id="f-name">
+        <label>Full Name</label>
+        <input name="name" required placeholder="Your full name">
+        <p class="err">Please enter your full name.</p>
+      </div>
+      <div class="field" id="f-email">
+        <label>Email ID</label>
+        <input type="email" name="email" required placeholder="you@example.com">
+        <p class="err">Enter a valid email address.</p>
+      </div>
+      <div class="field" id="f-phone">
+        <label>Phone Number</label>
+        <input name="phone" required placeholder="10-digit mobile number">
+        <p class="err">Enter a valid 10-digit phone number.</p>
+      </div>
+      <div class="field" id="f-address">
+        <label>Address</label>
+        <input name="address" required placeholder="House, street, city">
+        <p class="err">Please enter your address.</p>
+      </div>
+      <div class="field" id="f-password">
+        <label>Password</label>
+        <input type="password" name="password" required minlength="6" placeholder="At least 6 characters">
+        <p class="err">Password must be at least 6 characters.</p>
+      </div>
+      <div class="field" id="f-confirm">
+        <label>Confirm Password</label>
+        <input type="password" name="confirm" required placeholder="Re-enter password">
+        <p class="err">Passwords do not match.</p>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit">Register</button>
+    </form>
+    <p class="form-note">Already have an account? <a href="login.html">Login</a></p>
+  </div>
+</div>
+
+<footer id="site-footer"></footer>
+
+<script src="js/products.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/store.js"></script>
+<script>
+  renderHeader('Home');
+  renderFooter();
+
+  document.getElementById('registerForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const f = this;
+    let valid = true;
+    const checks = [
+      ['f-name', f.name.value.trim().length >= 2],
+      ['f-email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.value.trim())],
+      ['f-phone', /^[0-9]{10}$/.test(f.phone.value.trim())],
+      ['f-address', f.address.value.trim().length >= 5],
+      ['f-password', f.password.value.length >= 6],
+      ['f-confirm', f.confirm.value === f.password.value && f.confirm.value.length >= 6],
+    ];
+    checks.forEach(([id, ok]) => {
+      document.getElementById(id).classList.toggle('invalid', !ok);
+      if (!ok) valid = false;
+    });
+    if (!valid) return;
+
+    const res = registerUser({
+      name: f.name.value.trim(), email: f.email.value.trim(),
+      phone: f.phone.value.trim(), address: f.address.value.trim(), password: f.password.value,
+    });
+    const errBox = document.getElementById('formError');
+    if (!res.ok){
+      errBox.textContent = res.error;
+      errBox.classList.add('show');
+      return;
+    }
+    errBox.classList.remove('show');
+    toast('Account created successfully');
+    setTimeout(()=> window.location.href = 'account.html', 400);
+  });
+</script>
+</body>
+</html>
